@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum Status{
-    isolated,
-    sick,
-    healed,
 
-}
 
 namespace CoronaTrackApp
 {
+    public enum Status
+    {
+        isolated,
+        sick,
+        healed,
+
+    }
     class Person
     {
         private long id;
