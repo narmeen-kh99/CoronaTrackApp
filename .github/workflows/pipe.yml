@@ -21,6 +21,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Run APP
+      run: dotnet run CoronaTrackApp.sln
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Run APP withFile
