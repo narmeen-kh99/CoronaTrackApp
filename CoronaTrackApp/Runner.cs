@@ -54,7 +54,7 @@ namespace CoronaTrackApp
         {
             foreach(Person person in this.people)
             {
-                if (person.WhoAmI() == "Patient")
+                if (person.PStatus == Status.sick)
                 {
                     Console.WriteLine(person);
                 }
@@ -283,16 +283,19 @@ namespace CoronaTrackApp
                     if (this.validateInputLength(words, 6))
                     {
                         this.updateLabTest(int.Parse(words[1]), int.Parse(words[2]), long.Parse(words[3]), words[4], bool.Parse(words[5]));
+                        Console.WriteLine("Lab test Successfuly updated");
                     }
                     else
                     {
                         Console.WriteLine("The input you pass not Valid!");
                     }
                     
-                    //TODO
+                    
 
                     break;
                 case "Show-sick":
+                    this.printSperator();
+                    this.printCommandString("SHOW-SICK");
                     this.printSickList();
                     break;
                 case "Show-person":

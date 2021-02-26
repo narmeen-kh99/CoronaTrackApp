@@ -86,7 +86,7 @@ namespace CoronaTrackApp
         }
         public Status PStatus
         {
-            get { return PStatus; }
+            get { return status; }
          
         }
         public void setStatus(int status)
@@ -136,7 +136,7 @@ namespace CoronaTrackApp
 
         public override string ToString()
         {
-            return this.Id + ", " + this.firstname + ", " + this.lastname + ", " +this.birthdate+", "+this.phone+", "+this.mail+", "+this.address+", "+this.apartment+", "+this.house_residents+", 0";
+            return this.Id + ", " + this.firstname + ", " + this.lastname + ", " +this.birthdate+", "+this.phone+", "+this.mail+", "+this.address+", "+this.apartment+", "+this.house_residents+", "+this.sick_id;
         }
 
 

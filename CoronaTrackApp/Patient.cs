@@ -21,10 +21,10 @@ namespace CoronaTrackApp
 
 
 
-        public override string WhoAmI()
-        {
-            return "Patient";
-        }
+        //public override string WhoAmI()
+        //{
+        //    return "Patient";
+        //}
 
 
     }

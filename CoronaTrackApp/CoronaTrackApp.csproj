@@ -50,7 +50,6 @@
     <Compile Include="Address.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="LabTest.cs" />
-    <Compile Include="Healed.cs" />
     <Compile Include="Encounter.cs" />
   </ItemGroup>
   <ItemGroup>
