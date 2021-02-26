@@ -300,7 +300,7 @@ namespace CoronaTrackApp
                     break;
                 case "Show-person":
                     this.printSperator();
-                    this.printCommandString("SHOW PERSON");
+                    this.printCommandString("SHOW-PERSON");
                     long _id = long.Parse(words[1]);
                     int userIndex = this.indexOf(this.people,_id);
                     if (userIndex > -1 && !this.people[userIndex].IsEncounter)
@@ -308,10 +308,17 @@ namespace CoronaTrackApp
 
                         Console.WriteLine(this.people[userIndex]);
                         Console.WriteLine("** LAB RESULT BEGIN **");
-                        List<LabTest> userTests = this.tests.Where(test => test.PersonId == _id).OrderBy(test => test.Date).ToList();
-                        foreach (LabTest test in userTests)
+                        List<LabTest> userTests = this.getLabTestsByPerson(_id);
+                        if (userTests.Count == 0)
                         {
-                            Console.WriteLine(test);
+                            Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
+                        }
+                        else
+                        {
+                            foreach (LabTest test in userTests)
+                            {
+                                Console.WriteLine(test);
+                            }
                         }
                         Console.WriteLine("** LAB RESULT END **");
                     }

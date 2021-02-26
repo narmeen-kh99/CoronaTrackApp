@@ -4,9 +4,10 @@
 /Users/adhamkhalilieh/Documents/CoronaTrackApp/CoronaTrackApp/obj/Debug/CoronaTrackApp.csproj.CoreCompileInputs.cache
 /Users/adhamkhalilieh/Documents/CoronaTrackApp/CoronaTrackApp/obj/Debug/CoronaTrackApp.exe
 /Users/adhamkhalilieh/Documents/CoronaTrackApp/CoronaTrackApp/obj/Debug/CoronaTrackApp.pdb
+C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\obj\Debug\CoronaTrackApp.csproj.CoreCompileInputs.cache
 C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\bin\Debug\CoronaTrackApp.exe.config
 C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\bin\Debug\CoronaTrackApp.exe
 C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\bin\Debug\CoronaTrackApp.pdb
-C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\obj\Debug\CoronaTrackApp.csproj.CoreCompileInputs.cache
 C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\obj\Debug\CoronaTrackApp.exe
 C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\obj\Debug\CoronaTrackApp.pdb
+C:\Users\NARMEN\Desktop\software_engineering_project\CoronaTrackApp\CoronaTrackApp\obj\Debug\CoronaTrackApp.csprojAssemblyReference.cache

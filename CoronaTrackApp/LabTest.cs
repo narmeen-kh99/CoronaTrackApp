@@ -39,7 +39,7 @@ namespace CoronaTrackApp
             get { return date; }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return this.date.ToString("d") + " " + this.labid + " " + this.testid + " " + this.result;
         }

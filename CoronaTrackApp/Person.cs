@@ -15,19 +15,19 @@ namespace CoronaTrackApp
 {
     class Person
     {
-        protected long id;
-        protected string firstname;
-        protected string lastname;
-        protected string birthdate;
-        protected string phone;
-        protected string mail;
-        protected Address address;
-        protected int apartment;
-        protected int house_residents;
-        protected long sick_id;
-        protected List<Route> route;
-        protected Status status;
-        protected bool isEncounter = false;
+        private long id;
+        private string firstname;
+        private string lastname;
+        private string birthdate;
+        private string phone;
+        private string mail;
+        private Address address;
+        private int apartment;
+        private int house_residents;
+        private long sick_id;
+        private List<Route> route;
+        private Status status;
+        private bool isEncounter = false;
 
 
         //Class 
