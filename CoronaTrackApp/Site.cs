@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoronaTrackApp
 {
-    class Site
+    class Route
     {
         private long id;
         private String date;
