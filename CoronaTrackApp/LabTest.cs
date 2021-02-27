@@ -49,5 +49,16 @@ namespace CoronaTrackApp
             this.date = newtest.Date; ;
             this.result = newtest.Result;
         }
+
+        public override bool Equals(object obj)
+        {
+            var test = obj as LabTest;
+            return test != null &&
+                   LabId == test.LabId &&
+                   TestId == test.TestId &&
+                   PersonId == test.PersonId &&
+                   Result == test.Result &&
+                   Date == test.Date;
+        }
     }
 }
