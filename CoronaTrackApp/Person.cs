@@ -15,7 +15,7 @@ public enum Status
 namespace CoronaTrackApp
 {
 
-    class Person
+    public class Person
     {
         private long id;
         private string firstname;
@@ -32,12 +32,11 @@ namespace CoronaTrackApp
         private bool isEncounter = false;
 
 
-        //Class 
 
-
+        //Empty Constructor
         public Person() { }
 
-
+        
         public Person(long id, string firstname, string lastname, string birthdate, string phone, string mail, string city, string street, int house_number, int apartment, int house_residents)
         {
             this.id = id;
@@ -53,6 +52,7 @@ namespace CoronaTrackApp
             this.route = new List<Route>();
             this.status = Status.sick;
         }
+
 
         public Person(long sickid, string firstname, string lastname, string phone)
         {
@@ -129,6 +129,7 @@ namespace CoronaTrackApp
             get { return route; }
         }
 
+
         public string printEncounterDetails()
         {
             return this.firstname + " " + this.lastname + " " + this.phone;
@@ -145,13 +146,27 @@ namespace CoronaTrackApp
         }
 
 
-
         public override string ToString()
         {
             return this.Id + ", " + this.firstname + ", " + this.lastname + ", " +this.birthdate+", "+this.phone+", "+this.mail+", "+this.address+", "+this.apartment+", "+this.house_residents+", "+this.sick_id;
         }
 
+        public override bool Equals(object obj)
+        {
+            var test = obj as Person;
+            return test != null &&
+                   id == test.id &&
+                   firstname == test.firstname &&
+                   lastname == test.lastname &&
+                   birthdate == test.birthdate &&
+                   phone == test.phone &&
+                   mail == test.mail &&
+                   address.City == test.address.City &&
+                   address.Street == test.address.Street &&
+                   address.Number == test.address.Number &&
+                   house_residents == test.house_residents &&
+                   apartment == test.apartment;
+        }
 
- 
     }
 }

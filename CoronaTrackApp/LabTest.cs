@@ -39,6 +39,7 @@ namespace CoronaTrackApp
             get { return date; }
         }
 
+
         public override string ToString()
         {
             return this.date.ToString("d") + " " + this.labid + " " + this.testid + " " + this.result;
@@ -46,7 +47,7 @@ namespace CoronaTrackApp
         public void replaceParams(LabTest newtest)
         {
             this.personid = newtest.personid;
-            this.date = newtest.Date; ;
+            this.date = newtest.Date;
             this.result = newtest.Result;
         }
 

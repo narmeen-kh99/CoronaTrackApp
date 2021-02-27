@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoronaTrackApp
 {
-    class Runner
+    public class Runner
     {
         private List<Person> people;
         private List<Person> encounter;
@@ -90,7 +90,7 @@ namespace CoronaTrackApp
             }
             else
             {
-                Console.WriteLine("Person with id:" + id + " not Exists");
+                Console.WriteLine("Person with id:" + id + " doesnt Exist");
             }
         }
 

@@ -41,5 +41,14 @@ namespace CoronaTrackApp
             }
             return myString;
         }
+        public override bool Equals(object obj)
+        {
+            var test = obj as Route;
+            return test != null &&
+                   visit_date == test.visit_date &&
+                   visit_time == test.visit_time &&
+                   sitename == test.sitename;
+                  
+        }
     }
 }

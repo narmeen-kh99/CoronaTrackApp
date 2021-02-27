@@ -17,7 +17,6 @@ namespace CoronaTrackApp.Tests
             var expected = new LabTest(1, 1, 123, "01/04/20", true);
 
             Assert.AreEqual(expected, myObj);
-
         }
  
     }
