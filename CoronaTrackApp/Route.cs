@@ -29,7 +29,7 @@ namespace CoronaTrackApp
 
         public DateTime RDateTime
         {
-            get { return RDateTime; }
+            get { return datetime; }
         }
 
         public override string ToString()

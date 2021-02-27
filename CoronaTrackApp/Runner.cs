@@ -368,7 +368,7 @@ namespace CoronaTrackApp
                     {
                         foreach (Person person in this.people)
                         {
-                            if (person.PStatus == Status.isolated)
+                            if (person.PStatus == Status.isolated && !person.IsEncounter)
                             {
                                 Console.WriteLine(person.printIsolated());
                             }
