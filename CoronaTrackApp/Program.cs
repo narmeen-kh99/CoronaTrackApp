@@ -17,16 +17,6 @@ namespace CoronaTrackApp
 
 
 
-
-
-
-
-
-
-
-
-
-
         static void Main(string[] args)
         {
             Runner RunnerObj = new Runner();

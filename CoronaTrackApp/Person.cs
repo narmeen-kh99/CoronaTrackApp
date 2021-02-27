@@ -123,12 +123,22 @@ namespace CoronaTrackApp
             this.route = new List<Route>();
 
         }
+
+        public List<Route> PRoutes
+        {
+            get { return route; }
+        }
+
         public string printEncounterDetails()
         {
             return this.firstname + " " + this.lastname + " " + this.phone;
         }
 
+        public string printIsolated()
+        {
+            return this.Id + ", " + this.firstname + ", " + this.lastname + ", " + this.birthdate + ", " + this.phone + ", " + this.mail + ", " + this.address + ", " + this.apartment + ", " + this.house_residents;
 
+        }
         public void addRoute(Route route)
         {
             this.route.Add(route);

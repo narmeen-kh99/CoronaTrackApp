@@ -296,31 +296,87 @@ namespace CoronaTrackApp
                 case "Show-sick":
                     this.printSperator();
                     this.printCommandString("SHOW-SICK");
-                    this.printSickList();
+                    if (this.validateInputLength(words, 1))
+                    {
+                        this.printSickList();
+                    }
+                    else
+                    {
+                        Console.WriteLine("The input you pass not Valid!");
+                    }
+                    
                     break;
                 case "Show-person":
                     this.printSperator();
                     this.printCommandString("SHOW-PERSON");
-                    long _id = long.Parse(words[1]);
-                    int userIndex = this.indexOf(this.people,_id);
-                    if (userIndex > -1 && !this.people[userIndex].IsEncounter)
+                    if (this.validateInputLength(words, 2))
                     {
+                        long _id = long.Parse(words[1]);
+                        int userIndex = this.indexOf(this.people, _id);
+                        if (userIndex > -1 && !this.people[userIndex].IsEncounter)
+                        {
 
-                        Console.WriteLine(this.people[userIndex]);
-                        Console.WriteLine("** LAB RESULT BEGIN **");
-                        List<LabTest> userTests = this.getLabTestsByPerson(_id);
-                        if (userTests.Count == 0)
-                        {
-                            Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
-                        }
-                        else
-                        {
-                            foreach (LabTest test in userTests)
+                            Console.WriteLine(this.people[userIndex]);
+                            Console.WriteLine("** LAB RESULT BEGIN **");
+                            List<LabTest> userTests = this.getLabTestsByPerson(_id);
+                            if (userTests.Count == 0)
                             {
-                                Console.WriteLine(test);
+                                Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
+                            }
+                            else
+                            {
+                                foreach (LabTest test in userTests)
+                                {
+                                    Console.WriteLine(test);
+                                }
+                            }
+                            Console.WriteLine("** LAB RESULT END **");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("The input you pass not Valid!");
+                    }
+                    break;
+                case "Show-person-route":
+                    this.printSperator();
+                    this.printCommandString("SHOW_ISOLATED");
+                    if (this.validateInputLength(words, 2))
+                    {
+                        long id = long.Parse(words[1]);
+                        int p_index = this.indexOf(this.people, id);
+                        if(p_index < 0)
+                        {
+                            Console.WriteLine("PERSON NOT FOUND");
+                            break;
+                        }
+                        List<Route> orderedRoutes = this.people[p_index].PRoutes.OrderBy(r => r.RDateTime).ToList();
+                        foreach(Route route in orderedRoutes)
+                        {
+                            Console.WriteLine(route);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
+                    }
+                        break;
+                case "Show-isolated":
+                    this.printSperator();
+                    this.printCommandString("SHOW_ISOLATED");
+                    if (this.validateInputLength(words, 1))
+                    {
+                        foreach (Person person in this.people)
+                        {
+                            if (person.PStatus == Status.isolated)
+                            {
+                                Console.WriteLine(person.printIsolated());
                             }
                         }
-                        Console.WriteLine("** LAB RESULT END **");
+                    }
+                    else
+                    {
+                        Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
                     }
                     break;
 

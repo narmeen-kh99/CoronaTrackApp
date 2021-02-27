@@ -14,6 +14,7 @@ namespace CoronaTrackApp
             this.sitename = sitename;
             string fulldate = visit_date + " " + visit_time;
             this.datetime = DateTime.Parse(fulldate);
+            this.address = null;
             
         }
 
@@ -24,6 +25,21 @@ namespace CoronaTrackApp
             string fulldate = visit_date + " " + visit_time;
             this.datetime = DateTime.Parse(fulldate);
  
+        }
+
+        public DateTime RDateTime
+        {
+            get { return RDateTime; }
+        }
+
+        public override string ToString()
+        {
+            string myString = this.datetime.ToString("dd/MM/yyyy HH:mm") + " " + this.sitename; 
+            if(this.address != null)
+            {
+                myString += " " + this.address;
+            }
+            return myString;
         }
     }
 }
