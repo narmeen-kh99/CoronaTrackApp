@@ -9,8 +9,8 @@ namespace CoronaTrackApp
     public class Runner
     {
         private List<Person> people;
-        private List<Person> encounter;
         private List<LabTest> tests;
+        private DateTime showSickTime;
        
 
         
@@ -18,8 +18,8 @@ namespace CoronaTrackApp
         public Runner()
         {
             this.people = new List<Person>();
-            this.encounter = new List<Person>();
             this.tests = new List<LabTest>();
+            this.showSickTime = DateTime.Now;
 
         }
        
@@ -150,6 +150,7 @@ namespace CoronaTrackApp
                     if (test.Result)
                     {
                         this.people[p_index].setStatus(1);
+
                     }
                     else
                     {
@@ -162,6 +163,17 @@ namespace CoronaTrackApp
                 }
             }
 
+        }
+
+        public void sickPerCity(int sicks)
+        {
+        
+            var myList = this.people.Where(person => person.PStatus == Status.sick).ToList();
+            var dictionary = myList.GroupBy(x=>x.getCity()).ToDictionary(x => x.Key, x => x.Count());
+            foreach(var item in dictionary)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value / sicks * 100 + " %");
+            }
         }
 
         /*
@@ -289,8 +301,8 @@ namespace CoronaTrackApp
                     {
                         Console.WriteLine("The input you pass not Valid!");
                     }
-                    
-                    
+
+
 
                     break;
                 case "Show-sick":
@@ -304,7 +316,19 @@ namespace CoronaTrackApp
                     {
                         Console.WriteLine("The input you pass not Valid!");
                     }
-                    
+
+                    break;
+                case "Show-new-sick":
+                    this.printSperator();
+                    this.printCommandString("SHOW-NEW-SICK");
+                    foreach (Person person in this.people)
+                    {
+                        if (person.PStatus == Status.sick && person.AddedAt.CompareTo(this.showSickTime) > 0)
+                        {
+                            Console.WriteLine(person);
+                        }
+                    }
+                    this.showSickTime = DateTime.Now;
                     break;
                 case "Show-person":
                     this.printSperator();
@@ -345,22 +369,22 @@ namespace CoronaTrackApp
                     {
                         long id = long.Parse(words[1]);
                         int p_index = this.indexOf(this.people, id);
-                        if(p_index < 0)
+                        if (p_index < 0)
                         {
                             Console.WriteLine("PERSON NOT FOUND");
                             break;
                         }
                         List<Route> orderedRoutes = this.people[p_index].PRoutes.OrderBy(r => r.RDateTime).ToList();
-                        foreach(Route route in orderedRoutes)
+                        foreach (Route route in orderedRoutes)
                         {
                             Console.WriteLine(route);
                         }
                     }
                     else
                     {
-                        Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
+                        Console.WriteLine("The input you pass not Valid!");
                     }
-                        break;
+                    break;
                 case "Show-isolated":
                     this.printSperator();
                     this.printCommandString("SHOW_ISOLATED");
@@ -376,10 +400,58 @@ namespace CoronaTrackApp
                     }
                     else
                     {
-                        Console.WriteLine("NO LAB TEST FOUND FOR THIS PERSON");
+                        Console.WriteLine("The input you pass not Valid!");
                     }
                     break;
-
+                case "Show-stat":
+                    this.printSperator();
+                    this.printCommandString("SHOW_STAT");
+                    string[] cleanInput = (string.Join("", words.Skip(1).ToArray())).Split(',');
+                    if (cleanInput.Length > 0)
+                    {
+                        int sick = this.people.Where(person => person.PStatus == Status.sick).ToList().Count;
+                        int isolated = this.people.Where(person => person.PStatus == Status.isolated).ToList().Count;
+                        int healed = this.people.Where(person => person.PStatus == Status.healed).ToList().Count;
+                        foreach (var word in cleanInput)
+                        {
+                            switch (word)
+                            {
+                                case "sicks":
+                                    Console.WriteLine("** BEGIN SICK **");
+                                    Console.WriteLine(sick);
+                                    Console.WriteLine("** END SICK **");
+                                    break;
+                                case "healed":
+                                    Console.WriteLine("** BEGIN HEALED **");
+                                    Console.WriteLine(healed);
+                                    Console.WriteLine("** END HEALED **");
+                                    break;
+                                case "isolated":
+                                    Console.WriteLine("** BEGIN ISOLATED **");
+                                    Console.WriteLine(isolated);
+                                    Console.WriteLine("** END ISOLATED **");
+                                    break;
+                                case "sick-per-city":
+                                    Console.WriteLine("** BEGIN SICK-PER-CITY **");
+                                    if(sick > 0)
+                                    {
+                                        this.sickPerCity(sick);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("There is no sicks");
+                                    }
+                                    Console.WriteLine("** END SICK-PER-CITY **");
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                       Console.WriteLine("The input you pass not Valid!");
+                    }
+      
+                    break;
                 case "Show-help":
                     this.printSperator();
                     this.printCommandString("SHOW_HELP");
@@ -399,6 +471,7 @@ namespace CoronaTrackApp
                     break;
 
                 default:
+                    Console.WriteLine("COMMAND NOT FOUND!");
                     break;
             }
         }

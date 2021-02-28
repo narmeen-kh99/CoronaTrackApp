@@ -25,8 +25,8 @@ namespace CoronaTrackApp
         
             Console.WriteLine("Welcome to Corona-Track-App");
 
-            while (run)
-            {
+            //while (run)
+            //{
             
                 while (string.IsNullOrEmpty(choice))
                 {
@@ -52,13 +52,22 @@ namespace CoronaTrackApp
                 if(choice == "input")
                 {
                     Console.WriteLine("Write a Command..\nnote:first letter should be in Capital case");
-                    string line = Console.ReadLine();
-                    RunnerObj.generateChoice(line);
+                    Console.WriteLine("Write menu to go to main menu!");
+                    while (choice=="input") {
+                        string line = Console.ReadLine();
+                        if (line != "menu") {
+                            RunnerObj.generateChoice(line);
+                        }
+                        else
+                        {
+                            choice = "";
+                        }
+                    }
                 }
                 else if(choice=="file"){
                     Console.WriteLine("******************");
                     Console.WriteLine("Reading commands from File");
-                    foreach (string line in File.ReadLines("helptest.txt", Encoding.UTF8))
+                    foreach (string line in File.ReadLines("HelpTest.txt", Encoding.UTF8))
                     {
                         RunnerObj.generateChoice(line);
                      
@@ -71,7 +80,7 @@ namespace CoronaTrackApp
 
 
 
-            }
+            //}
 
            
   

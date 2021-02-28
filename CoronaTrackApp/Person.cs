@@ -30,6 +30,7 @@ namespace CoronaTrackApp
         private List<Route> route;
         private Status status;
         private bool isEncounter = false;
+        private DateTime addedAt;
 
 
 
@@ -51,6 +52,7 @@ namespace CoronaTrackApp
             this.sick_id = 0;
             this.route = new List<Route>();
             this.status = Status.sick;
+            this.addedAt = DateTime.Now;
         }
 
 
@@ -91,6 +93,12 @@ namespace CoronaTrackApp
             get { return status; }
          
         }
+        public DateTime AddedAt
+        {
+            get { return addedAt; }
+
+        }
+
         public void setStatus(int status)
         {
             if (status == 0)
@@ -99,6 +107,7 @@ namespace CoronaTrackApp
             }else if(status == 1)
             {
                 this.status = Status.sick;
+                this.addedAt = DateTime.Now;
             }else if (status == 2)
             {
                 this.status = Status.healed;
@@ -127,6 +136,10 @@ namespace CoronaTrackApp
         public List<Route> PRoutes
         {
             get { return route; }
+        }
+        public string getCity()
+        {
+            return this.address.City;
         }
 
 

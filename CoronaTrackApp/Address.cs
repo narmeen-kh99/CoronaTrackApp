@@ -18,7 +18,10 @@ namespace CoronaTrackApp
         public string Street { get => street; set => street = value; }
         public int Number { get => number; set => number = value; }
 
-        public string ToString()
+ 
+
+        public override string ToString()
+
         {
             return this.city + ", " + this.street + ", " + this.number;
         }
